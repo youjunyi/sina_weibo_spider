@@ -42,8 +42,9 @@ class CookieClone implements Serializable {
 		HtmlPage connection = webClient.getPage("https://passport.weibo.cn/signin/login");
 		DomElement username = connection.getElementById("loginName");
 		DomElement password = connection.getElementById("loginPassword");
-		username.setAttribute("value", "15555530123");
-		password.setAttribute("value", "aa123321");
+		//账号和密码
+		username.setAttribute("value", "");
+		password.setAttribute("value", "");
 		DomElement elementById = connection.getElementById("loginAction");
 		connection = elementById.click();
 		Thread.sleep(3000);
@@ -133,6 +134,7 @@ public class WeiBo_SINA {
 			weibo.newLine();
 			weibo.write(comment.asText());
 			weibo.flush();
+			//随机停留2秒到5秒，千万不要动，亲测1.5秒的可能会被屏蔽
 			Random r = new Random();
 			int nextInt = r.nextInt(5000);
 			while(nextInt<2000){
